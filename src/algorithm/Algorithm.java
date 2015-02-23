@@ -5,6 +5,10 @@
  */
 package algorithm;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Dedousis Dimitris <dimitris.dedousis@gmail.com>
@@ -17,6 +21,11 @@ public class Algorithm {
     private int[][] array;
     private int numberOfColumns;
     private int numberOfRows;
+    private List<Integer> sequence;
+
+    {
+        sequence = new ArrayList<>();
+    }
 
     public Algorithm(String firstWord, String secondWord) {
         this.firstWord = firstWord.toLowerCase();
@@ -47,6 +56,7 @@ public class Algorithm {
         printArray();
         optDistance = array[numberOfColumns - 1][numberOfRows - 1];
         System.out.println("distance(" + firstWord + ", " + secondWord + ") = " + optDistance);
+        findTheSequence();
     }
 
     private int getReplaceCost(String characterFromFirstString, String characterFromSecondString) {
@@ -55,6 +65,31 @@ public class Algorithm {
         } else {
             return 2;
         }
+    }
+
+    private void findTheSequence() {
+        for (int i = numberOfColumns - 1; i > 0;) {
+            for (int j = numberOfRows - 1; j > 0;) {
+                if (array[i][j - 1] < array[i - 1][j] && array[i][j - 1] < array[i - 1][j - 1]) {
+                    sequence.add(array[i][j - 1]);
+                    j = j - 1;
+                } else if (array[i][j - 1] > array[i - 1][j] && array[i - 1][j] < array[i - 1][j - 1]) {
+                    sequence.add(array[i - 1][j]);
+                    i = i - 1;
+                } else if (array[i][j - 1] > array[i - 1][j - 1] && array[i - 1][j] > array[i - 1][j - 1]) {
+                    sequence.add(array[i - 1][j - 1]);
+                    j = j - 1;
+                    i = i - 1;
+                }
+            }
+        }
+        System.out.println();
+        System.out.print("{  ");
+        for (Integer l : sequence) {
+            System.out.print(l + " ");
+        }
+        System.out.println(" }");
+        System.out.println();
     }
 
     private void printArray() {
