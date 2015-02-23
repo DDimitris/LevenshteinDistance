@@ -6,7 +6,6 @@
 package algorithm;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -70,13 +69,13 @@ public class Algorithm {
     private void findTheSequence() {
         for (int i = numberOfColumns - 1; i > 0;) {
             for (int j = numberOfRows - 1; j > 0;) {
-                if (array[i][j - 1] < array[i - 1][j] && array[i][j - 1] < array[i - 1][j - 1]) {
+                if (array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
                     sequence.add(array[i][j - 1]);
                     j = j - 1;
-                } else if (array[i][j - 1] > array[i - 1][j] && array[i - 1][j] < array[i - 1][j - 1]) {
+                } else if (array[i][j - 1] >= array[i - 1][j] && array[i - 1][j] <= array[i - 1][j - 1]) {
                     sequence.add(array[i - 1][j]);
                     i = i - 1;
-                } else if (array[i][j - 1] > array[i - 1][j - 1] && array[i - 1][j] > array[i - 1][j - 1]) {
+                } else if (array[i][j - 1] >= array[i - 1][j - 1] && array[i - 1][j] >= array[i - 1][j - 1]) {
                     sequence.add(array[i - 1][j - 1]);
                     j = j - 1;
                     i = i - 1;
