@@ -12,5 +12,6 @@ public class Main {
     public static void main(String[] args) {
         Algorithm a = new Algorithm("πεζοιται", "παιζετε");
         a.editDistance();
+        ui.Graphics.generateAndShowGraphic(a);
     }
 }
