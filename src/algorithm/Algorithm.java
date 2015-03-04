@@ -31,6 +31,18 @@ public class Algorithm {
         this.secondWord = secondWord.toLowerCase();
     }
 
+    public String getFirstWord() {
+        return firstWord;
+    }
+
+    public String getSecondWord() {
+        return secondWord;
+    }
+
+    public int[][] getArray() {
+        return array;
+    }
+    
     public void editDistance() {
         String[] string1 = firstWord.split("");
         String[] string2 = secondWord.split("");
