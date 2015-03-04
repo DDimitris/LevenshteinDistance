@@ -82,6 +82,7 @@ public class Graphics {
         constraints.gridwidth = first.length()+1;
         constraints.weighty = 0.2;
         constraints.fill = GridBagConstraints.NONE;
+        constraints.insets = new Insets(4, 0, 0, 0);
         
         result.add(generateDistanceGraphic(alg), constraints);
         
@@ -126,7 +127,7 @@ public class Graphics {
         
         JLabel distance = new JLabel("Levenshtein Distance: "+alg.getDistance());
         distance.setFont(new Font(null, Font.BOLD, 18));
-        distance.setBorder(BorderFactory.createEmptyBorder(3, 4, 3, 4));
+        distance.setBorder(BorderFactory.createEmptyBorder(5, 4, 3, 4));
         result.add(distance);
         
         return result;
