@@ -47,6 +47,10 @@ public class Algorithm {
     public Integer getDistance() {
         return optDistance;
     }
+
+    public List<Point> getSequence() {
+        return sequence;
+    }
     
     public void editDistance() {
         String[] string1 = firstWord.split("");
