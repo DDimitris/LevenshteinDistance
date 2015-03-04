@@ -11,7 +11,6 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
@@ -20,17 +19,20 @@ import javax.swing.SwingConstants;
 public class Graphics {
     
     public static JFrame generateAndShowGraphic(Algorithm alg) {
-        JFrame result = new JFrame("Levenshtein");
-        result.add(generateGraphic(alg));
+        JFrame result = new JFrame();
+        final BackgroundedPanel graphic = generateGraphic(alg);
+        graphic.setBorder(BorderFactory.createEmptyBorder(5, 6, 2, 4));
+        result.add(graphic);
         result.setTitle("Levenshtein - "+alg.getFirstWord()+"/"+alg.getSecondWord());
         result.setMinimumSize(new Dimension(80*alg.getFirstWord().length()+20, 80*alg.getSecondWord().length()));
         result.setLocationByPlatform(true);
         result.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        result.getContentPane().setBackground(Color.WHITE);
         result.setVisible(true);
         return result;
     }
     
-    public static JPanel generateGraphic(Algorithm alg) {
+    public static BackgroundedPanel generateGraphic(Algorithm alg) {
         if (alg.getArray() == null) {
             throw new IllegalArgumentException("Algorithm must be completed");
         }
@@ -38,7 +40,11 @@ public class Graphics {
         String second = alg.getSecondWord();
         int[][] array = alg.getArray();
         
-        JPanel result = new JPanel(new GridBagLayout());
+        BackgroundedPanel result = new BackgroundedPanel(new GridBagLayout());
+        result.setRounded(true);
+        result.setAlpha(0F);
+        result.setBackground(Color.WHITE);
+        
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         
