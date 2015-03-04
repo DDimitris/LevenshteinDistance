@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,8 +20,9 @@ import javax.swing.SwingConstants;
 public class Graphics {
     
     public static JFrame generateAndShowGraphic(Algorithm alg) {
-        JFrame result = new JFrame("Levenstein");
+        JFrame result = new JFrame("Levenshtein");
         result.add(generateGraphic(alg));
+        result.setTitle("Levenshtein - "+alg.getFirstWord()+"/"+alg.getSecondWord());
         result.setMinimumSize(new Dimension(80*alg.getFirstWord().length()+20, 80*alg.getSecondWord().length()));
         result.setLocationByPlatform(true);
         result.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,6 +71,14 @@ public class Graphics {
             }
         }
         
+        constraints.gridx = 0;
+        constraints.gridy = second.length()+2;
+        constraints.gridwidth = first.length()+1;
+        constraints.weighty = 0.2;
+        constraints.fill = GridBagConstraints.NONE;
+        
+        result.add(generateDistanceGraphic(alg), constraints);
+        
         return result;
     }
     
@@ -103,4 +113,17 @@ public class Graphics {
         
         return result;
     }
+    
+    static BackgroundedPanel generateDistanceGraphic(Algorithm alg) {
+        BackgroundedPanel result = new BackgroundedPanel(0.2F, Color.YELLOW, null, true);
+        result.setLayout(new BorderLayout());
+        
+        JLabel distance = new JLabel("Levenshtein Distance: "+alg.getDistance());
+        distance.setFont(new Font(null, Font.BOLD, 18));
+        distance.setBorder(BorderFactory.createEmptyBorder(3, 4, 3, 4));
+        result.add(distance);
+        
+        return result;
+    }
+    
 }
