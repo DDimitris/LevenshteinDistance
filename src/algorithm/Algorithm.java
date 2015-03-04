@@ -42,6 +42,10 @@ public class Algorithm {
     public int[][] getArray() {
         return array;
     }
+
+    public Integer getDistance() {
+        return optDistance;
+    }
     
     public void editDistance() {
         String[] string1 = firstWord.split("");
