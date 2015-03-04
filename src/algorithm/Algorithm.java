@@ -83,21 +83,26 @@ public class Algorithm {
     }
 
     private void findTheSequence() {
-        for (int i = numberOfColumns - 1; i > 0;) {
-            for (int j = numberOfRows - 1; j > 0;) {
-                if (array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
-                    sequence.add(array[i][j - 1]);
-                    j = j - 1;
-                } else if (array[i][j - 1] >= array[i - 1][j] && array[i - 1][j] <= array[i - 1][j - 1]) {
-                    sequence.add(array[i - 1][j]);
-                    i = i - 1;
-                } else if (array[i][j - 1] >= array[i - 1][j - 1] && array[i - 1][j] >= array[i - 1][j - 1]) {
-                    sequence.add(array[i - 1][j - 1]);
-                    j = j - 1;
-                    i = i - 1;
-                }
+        if (numberOfColumns != 0 || numberOfRows != 0) {
+            sequence.add(array[numberOfColumns-1][numberOfRows - 1]);
+        }
+        
+        int i = numberOfColumns - 1;
+        int j = numberOfRows - 1;
+        while (i > 0 || j > 0) {
+            if (i == 0 || array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
+                sequence.add(array[i][j - 1]);
+                j = j - 1;
+            } else if (j == 0 || array[i][j - 1] >= array[i - 1][j] && array[i - 1][j] <= array[i - 1][j - 1]) {
+                sequence.add(array[i - 1][j]);
+                i = i - 1;
+            } else if (array[i][j - 1] >= array[i - 1][j - 1] && array[i - 1][j] >= array[i - 1][j - 1]) {
+                sequence.add(array[i - 1][j - 1]);
+                j = j - 1;
+                i = i - 1;
             }
         }
+
         System.out.println();
         System.out.print("{  ");
         for (Integer l : sequence) {
