@@ -12,7 +12,8 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JPanel;
 
 /**
- * JPanel which supports background image, custom opacity and and rounded corners.
+ * JPanel which supports background image, custom opacity, rounded corners
+ * and border line.
  */
 public class BackgroundedPanel extends JPanel {
     
