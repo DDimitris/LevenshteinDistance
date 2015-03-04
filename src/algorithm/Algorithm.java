@@ -5,6 +5,7 @@
  */
 package algorithm;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Algorithm {
     private int[][] array;
     private int numberOfColumns;
     private int numberOfRows;
-    private List<Integer> sequence;
+    private List<Point> sequence;
 
     {
         sequence = new ArrayList<>();
@@ -84,20 +85,20 @@ public class Algorithm {
 
     private void findTheSequence() {
         if (numberOfColumns != 0 || numberOfRows != 0) {
-            sequence.add(array[numberOfColumns-1][numberOfRows - 1]);
+            sequence.add(new Point(numberOfColumns-1, numberOfRows - 1));
         }
         
         int i = numberOfColumns - 1;
         int j = numberOfRows - 1;
         while (i > 0 || j > 0) {
             if (i == 0 || array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
-                sequence.add(array[i][j - 1]);
+                sequence.add(new Point(i, j - 1));
                 j = j - 1;
             } else if (j == 0 || array[i][j - 1] >= array[i - 1][j] && array[i - 1][j] <= array[i - 1][j - 1]) {
-                sequence.add(array[i - 1][j]);
+                sequence.add(new Point(i - 1, j));
                 i = i - 1;
             } else if (array[i][j - 1] >= array[i - 1][j - 1] && array[i - 1][j] >= array[i - 1][j - 1]) {
-                sequence.add(array[i - 1][j - 1]);
+                sequence.add(new Point(i - 1, j - 1));
                 j = j - 1;
                 i = i - 1;
             }
@@ -105,8 +106,8 @@ public class Algorithm {
 
         System.out.println();
         System.out.print("{  ");
-        for (Integer l : sequence) {
-            System.out.print(l + " ");
+        for (Point l : sequence) {
+            System.out.print(array[l.x][l.y]+" ");
         }
         System.out.println(" }");
         System.out.println();
