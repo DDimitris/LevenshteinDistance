@@ -95,7 +95,7 @@ public class Algorithm {
         int i = numberOfColumns - 1;
         int j = numberOfRows - 1;
         while (i > 0 || j > 0) {
-            if (i == 0 || array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
+            if (i == 0 || j > 0 && array[i][j - 1] <= array[i - 1][j] && array[i][j - 1] <= array[i - 1][j - 1]) {
                 sequence.add(new Point(i, j - 1));
                 j = j - 1;
             } else if (j == 0 || array[i][j - 1] >= array[i - 1][j] && array[i - 1][j] <= array[i - 1][j - 1]) {
