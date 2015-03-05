@@ -19,7 +19,13 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
     }
-
+    
+    private void action() {
+        final Algorithm alg = new Algorithm(firstWordField.getText(), secondWordField.getText());
+        alg.editDistance();
+        Graphics.generateAndShowGraphic(alg);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +65,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         firstWordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         firstWordField.setText("elephant");
+        firstWordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstWordFieldActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
@@ -76,6 +87,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         secondWordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         secondWordField.setText("relevant");
+        secondWordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secondWordFieldActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -85,7 +101,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainPane.add(secondWordField, gridBagConstraints);
 
         buttonPanel.setOpaque(false);
-        buttonPanel.setLayout(new java.awt.GridLayout());
+        buttonPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         calculateButton.setFont(new java.awt.Font("Ubuntu", 0, 17)); // NOI18N
         calculateButton.setText("Calculate");
@@ -123,10 +139,16 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
-        final Algorithm alg = new Algorithm(firstWordField.getText(), secondWordField.getText());
-        alg.editDistance();
-        Graphics.generateAndShowGraphic(alg);
+        action();
     }//GEN-LAST:event_calculateButtonActionPerformed
+
+    private void firstWordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstWordFieldActionPerformed
+        action();
+    }//GEN-LAST:event_firstWordFieldActionPerformed
+
+    private void secondWordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondWordFieldActionPerformed
+        action();
+    }//GEN-LAST:event_secondWordFieldActionPerformed
 
     /**
      * @param args the command line arguments
