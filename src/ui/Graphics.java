@@ -25,7 +25,7 @@ public class Graphics {
         graphic.setBorder(BorderFactory.createEmptyBorder(5, 6, 2, 4));
         result.add(graphic);
         result.setTitle("Levenshtein - "+alg.getFirstWord()+"/"+alg.getSecondWord());
-        result.setMinimumSize(new Dimension(80*alg.getFirstWord().length()+20, 80*alg.getSecondWord().length()));
+        result.setMinimumSize(new Dimension(70*alg.getSecondWord().length()+20, 70*alg.getFirstWord().length()));
         result.setLocationByPlatform(true);
         result.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         result.getContentPane().setBackground(Color.WHITE);
@@ -53,18 +53,18 @@ public class Graphics {
         constraints.weightx = 0.5;
         constraints.weighty = 0.7;
         constraints.insets = new Insets(1, 1, 0, 1);
-        for (int i = 0; i < first.length(); i++) {
+        for (int i = 0; i < second.length(); i++) {
             constraints.gridx = i+1;
-            result.add(generateLetterGraphic(first.charAt(i), true), constraints);
+            result.add(generateLetterGraphic(second.charAt(i), true), constraints);
         }
         
         constraints.gridx = 0;
         constraints.weighty = 0.5;
         constraints.weightx = 0.7;
         constraints.insets = new Insets(1, 1, 1, 0);
-        for (int i = 0; i < second.length(); i++) {
+        for (int i = 0; i < first.length(); i++) {
             constraints.gridy = i+1;
-            result.add(generateLetterGraphic(second.charAt(i), false), constraints);
+            result.add(generateLetterGraphic(first.charAt(i), false), constraints);
         }
         
         constraints.weighty = 0.5;
@@ -73,8 +73,8 @@ public class Graphics {
         Point p = new Point();
         for (int i = 0; i < first.length(); i++) {
             for (int j = 0; j < second.length(); j++) {
-                constraints.gridx = i+1;
-                constraints.gridy = j+1;
+                constraints.gridx = j+1;
+                constraints.gridy = i+1;
                 p.x = i; p.y = j;
                 boolean inSequence = alg.getSequence().contains(p);
                 result.add(generateNumberGraphic(array[i][j], inSequence), constraints);
