@@ -42,7 +42,7 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Levenshtein");
         setBackground(java.awt.Color.white);
-        setMinimumSize(new java.awt.Dimension(238, 121));
+        setMinimumSize(new java.awt.Dimension(271, 148));
 
         mainPane.setBackground(new java.awt.Color(235, 243, 251));
         mainPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 4, 4, 4));
@@ -58,7 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainPane.add(firstWordLabel, gridBagConstraints);
 
         firstWordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
-        firstWordField.setText("πολλοί");
+        firstWordField.setText("elephant");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
@@ -75,7 +75,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainPane.add(secondWordLabel, gridBagConstraints);
 
         secondWordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
-        secondWordField.setText("πολύ");
+        secondWordField.setText("relevant");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
