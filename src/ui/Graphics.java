@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Point;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -69,11 +70,14 @@ public class Graphics {
         constraints.weighty = 0.5;
         constraints.weightx = 0.5;
         constraints.insets = new Insets(0, 0, 0, 0);
+        Point p = new Point();
         for (int i = 0; i < first.length(); i++) {
             for (int j = 0; j < second.length(); j++) {
                 constraints.gridx = i+1;
                 constraints.gridy = j+1;
-                result.add(generateNumberGraphic(array[i][j]), constraints);
+                p.x = i; p.y = j;
+                boolean inSequence = alg.getSequence().contains(p);
+                result.add(generateNumberGraphic(array[i][j], inSequence), constraints);
             }
         }
         
@@ -108,9 +112,13 @@ public class Graphics {
         return result;
     }    
     
-    static BackgroundedPanel generateNumberGraphic(int number) {
+    static BackgroundedPanel generateNumberGraphic(int number, boolean inSequence) {
         BackgroundedPanel result = new BackgroundedPanel(1F, Color.CYAN.brighter().brighter(), null, false);
-        result.setBorderLine(Color.BLACK);
+        if (!inSequence) {
+//            result.setBackground(Color.CYAN.brighter().brighter());
+            result.setAlpha(0.2F);
+        }
+        result.setBorderLine(Color.DARK_GRAY);
         result.setLayout(new BorderLayout());
         
         JLabel label = new JLabel(number+"");
