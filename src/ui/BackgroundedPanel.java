@@ -157,6 +157,7 @@ public class BackgroundedPanel extends JPanel {
                     g2.fill(ar);
                 }
                 if (borderLine != null) {
+                    g2.setComposite(oldComp);
                     g2.setColor(borderLine);
                     g2.draw(ar);
                 }
@@ -168,6 +169,7 @@ public class BackgroundedPanel extends JPanel {
                     g2.fillRect(x, y, width-1, height-1);
                 }
                 if (borderLine != null) {
+                    g2.setComposite(oldComp);
                     g2.setColor(borderLine);
                     g2.drawRect(x, y, width-1, height-1);
                 }
