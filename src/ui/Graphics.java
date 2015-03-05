@@ -82,8 +82,8 @@ public class Graphics {
         }
         
         constraints.gridx = 0;
-        constraints.gridy = second.length()+2;
-        constraints.gridwidth = first.length()+1;
+        constraints.gridy = first.length()+2;
+        constraints.gridwidth = second.length()+1;
         constraints.weighty = 0.2;
         constraints.fill = GridBagConstraints.NONE;
         constraints.insets = new Insets(4, 0, 0, 0);
